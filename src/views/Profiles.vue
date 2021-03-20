@@ -20,6 +20,7 @@
             <p class="subtitle">Bio</p>
             <p>{{ profile.bio }}</p>
         </div>
+        <button @click="remove(profile.username)" class="delete">Delete</button>
         <hr v-if="profile.username != profiles[profiles.length - 1].username">
     </div>
 </div>
@@ -31,6 +32,16 @@ export default {
     computed: {
         profiles() {
             return this.$root.$data.profileList;
+        }
+    },
+    methods: {
+        remove(id) {
+            for (let i = 0; i < this.profiles.length; i++) {
+                if (id == this.profiles[i].username) {
+                    this.$root.$data.profileList.splice(i, 1);
+                    return;
+                }
+            }
         }
     },
 }
@@ -85,8 +96,13 @@ export default {
 }
 
 hr {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
+}
+
+.delete {
+    float: right;
+    margin-right: 10px;
 }
 
 @media only screen and (min-width: 401px) and (max-width: 960px) {

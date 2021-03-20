@@ -10,7 +10,6 @@
             <input v-model="username" placeholder="Username">
         </div>
     </div>
-
     <p>Choose an Avatar</p>
     <div class="picture">
         <div v-for="picture in this.pictures" :key="picture.id">
